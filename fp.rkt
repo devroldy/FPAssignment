@@ -1,44 +1,49 @@
-;Hey there comment
-;Testing commit........
-(define (timestwo x) (* 2 x))
-(timestwo 5)
 
-(define (f x)
-  (+ x
-     34
-     (* x)
-     22))
-(f 2)
 
-(cons 'A '(B C))
-(cons '(A B) '(B C))
-(LIST '(A B) '(C F))
-
-(DEFINE (members atm lis)
-  (COND
-((NULL? lis) #F) ;; empty list
-((EQ? atm (CAR lis)) #T)
-(ELSE (members atm (CDR lis)))
-))
-
-(members 'A '(D F A G H))
-
-#;(DEFINE (reverse-general L)
- (COND
- ((NULL? L) '())
- (ELSE (CONS append((CDR L) (CAR L)))))
- ) 
- 
-
-#;(reverse-general (a b f))
-
-(DEFINE (reversed L)
-(IF (null? L) L
-    (APPEND (reversed (CDR L)) (list (CAR L)))
-    
-    )
+(DEFINE (reversing L)
+        (COND ((null? L) '())
+              ((list? L)
+               (append (reversing (cdr L))
+                       (list (reversing (car L)))
 )
+   )
+             (else l)
+              ))
 
-(reversed '(a a b c ( ( d e ))))
+(reverse '(a (b c) ((d e) f) g))
+
+;(DEFINE (sum L)
+;(IF (null? L) 0)
+ ;   ( + (CAR L) (sum (CDR L))))
 
 
+;(defiine (sum s)
+ ;     (if (null? s)
+  ;        0
+
+   ;       (+ (car s) (sum (cdr s)))))
+
+;(sum '(2 3))
+
+(define (summation a)
+  (COND ((null? a) '())
+        ((number? a) (list? a) 
+        (+ (car a) (summation (cdr a))))
+
+        (else a))
+  
+  )
+(summation '(2 3 3))
+
+(define (my-summation li)
+  (if (null? li)
+      0
+      (if (list? (car li))
+          (+ (my-summation (car li)) (my-summation (cdr li)))
+          (+ (car li) (my-summation (cdr li)))) ))
+
+(my-summation '(1 2 3))
+
+
+
+(number? 1)
