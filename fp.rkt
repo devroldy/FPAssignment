@@ -23,3 +23,17 @@
 
 
 (number? 1)
+
+(define (suming L)
+  (cond
+((null? L) 0)
+
+((number? (car L)) (+ (car L) (suming (cdr L))))
+((list? (car L))
+(+ (suming (car L)) (suming (cdr L))))
+(else
+       (+ 0 (suming (cdr L)) (suming (car L))
+) )
+))
+
+(suming '(a 100 (200)))
