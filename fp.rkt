@@ -1,48 +1,24 @@
-
-
-(DEFINE (reversing L)
+(DEFINE (reverse-general L)
         (COND ((null? L) '())
               ((list? L)
-               (append (reversing (cdr L))
-                       (list (reversing (car L)))
+               (append (reverse-general (cdr L))
+               (list (reverse-general (car L)))))
+             (else L)))
+(reverse-general '(1 (2 3) (4 (a (b (c d))))))
+
+
+(DEFINE (sum L)
+  (cond
+((null? L) 0)
+((not (list? L)) 0)
+((not (number? (car L))) (sum (cdr L)))
+(else
+ (+ (sum (car L)) (sum (cdr L)))
+        (+ (car L) (sum (cdr L)))
+) )
 )
-   )
-             (else l)
-              ))
 
-(reverse '(a (b c) ((d e) f) g))
-
-;(DEFINE (sum L)
-;(IF (null? L) 0)
- ;   ( + (CAR L) (sum (CDR L))))
-
-
-;(defiine (sum s)
- ;     (if (null? s)
-  ;        0
-
-   ;       (+ (car s) (sum (cdr s)))))
-
-;(sum '(2 3))
-
-(define (summation a)
-  (COND ((null? a) '())
-        ((number? a) (list? a) 
-        (+ (car a) (summation (cdr a))))
-
-        (else a))
-  
-  )
-(summation '(2 3 3))
-
-(define (my-summation li)
-  (if (null? li)
-      0
-      (if (list? (car li))
-          (+ (my-summation (car li)) (my-summation (cdr li)))
-          (+ (car li) (my-summation (cdr li)))) ))
-
-(my-summation '(1 2 3))
+(sum '(100 (200)))
 
 
 
