@@ -7,18 +7,18 @@
 (reverse-general '(1 (2 3) (4 (a (b (c d))))))
 
 
-(DEFINE (sum L)
+(DEFINE (sum-up-numbers-simple L)
   (cond
 ((null? L) 0)
 ((not (list? L)) 0)
-((not (number? (car L))) (sum (cdr L)))
+((not (number? (car L))) (sum-up-numbers-simple (cdr L)))
 (else
- (+ (sum (car L)) (sum (cdr L)))
-        (+ (car L) (sum (cdr L)))
+ (+ (sum-up-numbers-simple (car L)) (sum-up-numbers-simple (cdr L)))
+        (+ (car L) (sum-up-numbers-simple (cdr L)))
 ) )
 )
 
-(sum '(100 (200)))
+(sum-up-numbers-simple '(a b 100 (200)))
 
 
 
