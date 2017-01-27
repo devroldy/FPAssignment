@@ -22,8 +22,6 @@
 
 
 
-(number? 1)
-
 (define (suming L)
   (cond
 ((null? L) 0)
@@ -32,8 +30,8 @@
 ((list? (car L))
 (+ (suming (car L)) (suming (cdr L))))
 (else
-       (+ 0 (suming (cdr L)) (suming (car L))
+       (+ 0 (suming (cdr L)))
 ) )
-))
+)
 
-(suming '(a 100 (200)))
+(suming '(a 100 (200) (200)))
