@@ -36,3 +36,20 @@
 ) )
 )
 
+
+
+(Define (min-above-min L1 L2)
+(COND ((NULL? L1)#f) ((NULL? L2)
+ (COND
+     ((NULL? (CDR L1))(CAR L1))
+      ((< (CAR L1)(min-above-min (cdr L1) L2)) (CAR L1))
+      (ELSE
+           (min-above-min (CDR L1) L2))
+           )
+          )
+(ELSE (COND
+ ((>(CAR L1) (min-above-min L2 (LIST))) (CAR L1))
+  (ELSE (min-above-min (CDR L1) L2)) ))))
+ 
+
+(min-above-min '(1 1) '(2 3))
